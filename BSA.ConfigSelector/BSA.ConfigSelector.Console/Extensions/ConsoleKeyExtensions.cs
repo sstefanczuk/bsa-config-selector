@@ -28,5 +28,10 @@ namespace BSA.ConfigSelector.ConsoleApp.Extensions
         {
             return key.Key == ConsoleKey.Enter;
         }
+
+        public static bool IsEscape(this ConsoleKeyInfo key)
+        {
+            return key.Key == ConsoleKey.Escape;
+        }
     }
 }

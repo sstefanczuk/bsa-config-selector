@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BSA.ConfigSelector.ConsoleApp.Extensions;
+using System;
 
 namespace BSA.ConfigSelector.ConsoleApp.States
 {
@@ -13,8 +14,18 @@ namespace BSA.ConfigSelector.ConsoleApp.States
             _context = context;
         }
 
-        public abstract void HandleKeyPressed(ConsoleKeyInfo pressedKey);
+        public void HandleKeyPressed(ConsoleKeyInfo pressedKey)
+        {
+            if(pressedKey.IsEscape())
+            {
+                Environment.Exit(0);
+            }
+
+            OnKeyPressed(pressedKey);
+        }
 
         public abstract void DisplayState();
+
+        protected virtual void OnKeyPressed(ConsoleKeyInfo pressedKey) { }
     }
 }

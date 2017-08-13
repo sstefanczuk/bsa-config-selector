@@ -11,9 +11,9 @@ namespace BSA.ConfigSelector.ConsoleApp.States
             SelectedIndex = selectedIndex;
         }
 
-        public override void HandleKeyPressed(ConsoleKeyInfo pressedKey)
+        protected override void OnKeyPressed(ConsoleKeyInfo pressedKey)
         {
-            base.HandleKeyPressed(pressedKey);
+            base.OnKeyPressed(pressedKey);
 
             if (pressedKey.IsKeyLeft())
             {

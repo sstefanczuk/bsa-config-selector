@@ -14,7 +14,20 @@ namespace BSA.ConfigSelector.ConsoleApp.States
             SelectedIndex = selectedIndex;
         }
 
-        public override void HandleKeyPressed(ConsoleKeyInfo pressedKey)
+        public override void DisplayState()
+        {
+            Console.WriteLine("Change current config to:");
+
+            int index = 0;
+            foreach (DefinedConfig config in Context.DefinedConfigs)
+            {
+                Console.CursorLeft += 3;
+                DisplayConfigInfo(config, index);
+                index++;
+            }
+        }
+
+        protected override void OnKeyPressed(ConsoleKeyInfo pressedKey)
         {
             if (pressedKey.IsKeyUp())
             {
@@ -34,19 +47,6 @@ namespace BSA.ConfigSelector.ConsoleApp.States
             if (pressedKey.IsEnter())
             {
                 ChangeConfig();
-            }
-        }
-
-        public override void DisplayState()
-        {
-            Console.WriteLine("Change current config to:");
-
-            int index = 0;
-            foreach (DefinedConfig config in Context.DefinedConfigs)
-            {
-                Console.CursorLeft += 3;
-                DisplayConfigInfo(config, index);
-                index++;
             }
         }
 
